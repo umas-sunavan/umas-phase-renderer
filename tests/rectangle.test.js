@@ -1,4 +1,4 @@
-import Rectangle from "../elements/rectangle.js";
+import Rectangle from "../public/elements/rectangle.js";
 
 describe("Rectangle", () => {
   let rect;

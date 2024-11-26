@@ -1,4 +1,4 @@
-import Triangle from "../elements/triangle.js";
+import Triangle from "../public/elements/triangle.js";
 
 describe("Triangle", () => {
   let triangle;

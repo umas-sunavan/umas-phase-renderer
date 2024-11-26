@@ -1,4 +1,4 @@
-import Circle from "../elements/circle.js";
+import Circle from "../public/elements/circle.js";
 
 describe("Circle", () => {
   let circle;

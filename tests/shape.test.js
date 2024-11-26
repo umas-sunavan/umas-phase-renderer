@@ -1,4 +1,4 @@
-import Shape from "../elements/shape.js";
+import Shape from "../public/elements/shape.js";
 
 describe("Shape", () => {
   let shape;
