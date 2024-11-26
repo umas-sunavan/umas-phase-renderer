@@ -15,7 +15,6 @@ function Shape() {
   this.showStroke = false;
   this.showFill = false;
   this.smooth = true;
-  this.image = new Image();
 }
 
 Shape.prototype.draw = function (ctx) {
@@ -54,7 +53,6 @@ Shape.prototype.draw = function (ctx) {
     ctx.closePath();
 
     switch (this.fill.type) {
-      default:
       case "SOLID":
         const [r, g, b, a] = this.fill.color;
         this.fill.color.forEach((color) => {
@@ -72,16 +70,17 @@ Shape.prototype.draw = function (ctx) {
         ctx.fill();
         break;
       case "IMAGE":
-        this.image.src = this.fill.image;
-        this.image.onerror = () => {
+        const image = new Image();
+        image.src = this.fill.image;
+        image.onerror = () => {
           throw new Error("image should be valid");
         };
-        const pattern = ctx.createPattern(this.image, "no-repeat");
+        const pattern = ctx.createPattern(image, "no-repeat");
         if (pattern) {
           ctx.save();
           // Scale and position the pattern to fit the shape
-          const scaleX = this.width / this.image.width;
-          const scaleY = this.height / this.image.height;
+          const scaleX = this.width / image.width;
+          const scaleY = this.height / image.height;
           pattern.setTransform(
             new DOMMatrix()
               .translateSelf(this.x, this.y)
